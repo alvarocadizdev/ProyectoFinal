@@ -10,13 +10,18 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './register.component.html',
+   styleUrl: './register.component.css',
 })
 export class RegisterComponent {
   user = {
     email: '',
     password: ''
   };
-
+  
+  goToLogin() {
+    this.router.navigate(['/login']);
+  }
+  
   constructor(private authService: AuthService, private router: Router) {}
 
   register() {
