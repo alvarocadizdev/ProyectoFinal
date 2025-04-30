@@ -1,0 +1,160 @@
+/* login.component.css */
+
+/* Fondo oscuro galáctico con estrellas sutiles */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background: radial-gradient(circle, #1a1a2e, #16213e, #0f3460);
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* Capa de estrellas (animación de fondo similar al home) */
+  .login-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://cdn.pixabay.com/photo/2015/10/07/09/31/astronomy-973682_960_720.jpg');
+    background-size: cover;
+    filter: blur(8px);
+    z-index: 1;
+    animation: stars 120s linear infinite;
+  }
+  
+  /* Tarjeta de login */
+  .login-card {
+    position: relative;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+    padding: 50px 30px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: fadeIn 2s ease-out;
+  }
+  
+  /* Título con tipografía futurista */
+  .login-card h1 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  /* Subtítulo para crear contraste */
+  .login-card p {
+    color: #d1d8e0;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    font-weight: 300;
+  }
+  
+  /* Formulario de login */
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .input-group label {
+    font-size: 1rem;
+    color: #fff;
+    text-align: left;
+  }
+  
+  .input-group input {
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+  }
+  
+  .input-group input:focus {
+    background-color: rgba(255, 255, 255, 0.3);
+    outline: none;
+  }
+  
+  /* Botón Iniciar sesión */
+  .btn-primary {
+    padding: 14px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+  }
+  
+  .btn-primary:hover {
+    background-color: #574fd6;
+    transform: translateY(-5px);
+  }
+  
+  /* Enlace para iniciar sesión */
+  .footer {
+    margin-top: 20px;
+  }
+  
+  .footer .link {
+    color: #6c63ff;
+    text-decoration: none;
+  }
+  
+  .footer .link:hover {
+    text-decoration: underline;
+    color: #a29bfe;
+  }
+  
+  /* Animación de las estrellas en el fondo */
+  @keyframes stars {
+    0% { background-position: 0 0; }
+    100% { background-position: 20000px 20000px; }
+  }
+  
+  /* Animación de entrada de la tarjeta */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .error {
+    color: #ff6b6b;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    text-align: left;
+  }
+  

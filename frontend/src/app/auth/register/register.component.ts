@@ -17,14 +17,18 @@ export class RegisterComponent {
     email: '',
     password: ''
   };
-  
+
   goToLogin() {
     this.router.navigate(['/login']);
   }
   
+  
+
   constructor(private authService: AuthService, private router: Router) {}
 
   register() {
+   
+
     this.authService.register(this.user).subscribe({
       next: res => {
         this.authService.saveToken(res.token);

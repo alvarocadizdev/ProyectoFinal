@@ -1,21 +1,35 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule],
-  templateUrl: './login.component.html'
+  imports: [FormsModule, CommonModule],
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  credentials = { email: '', password: '' };
+  user = {
+    email: '',
+    password: ''
+  };
 
   constructor(private authService: AuthService, private router: Router) {}
 
+  goToRegister() {
+    this.router.navigate(['/register']);
+  }
+
   login() {
-    this.authService.login(this.credentials).subscribe({
+    if (!this.user.email || !this.user.password) {
+      // Si los campos están vacíos, no enviar el formulario
+      return;
+    }
+
+    this.authService.login(this.user).subscribe({
       next: res => {
         this.authService.saveToken(res.token);
         this.router.navigate(['/dashboard']);

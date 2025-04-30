@@ -5,7 +5,8 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-dashboard',
   imports: [FormsModule],
-  templateUrl: './dashboard.component.html'
+  templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent {
   constructor(private authService: AuthService, private router: Router) {}
