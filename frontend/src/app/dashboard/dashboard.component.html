@@ -1,9 +1,19 @@
 <div class="dashboard-container">
-    <div class="dashboard-card">
-      <h1>Bienvenido al Panel</h1>
-      <p>Has iniciado sesión correctamente.</p>
-      <button (click)="goToProfile()" class="btn-primary">Ver Perfil</button>
-      <button (click)="logout()" class="btn-primary">Cerrar sesión</button>
+  <div class="dashboard-card">
+    <h1>Bienvenido al Panel</h1>
+    <p>Has iniciado sesión correctamente.</p>
+
+    <!-- Mostrar datos del perfil si están disponibles -->
+    <div *ngIf="profile && profile.intereses">
+      <p><strong>Intereses:</strong> {{ profile.intereses }}</p>
+      <p><strong>Objetivos:</strong> {{ profile.objetivos }}</p>
     </div>
+
+    <button (click)="goToProfile()" class="btn-primary">Ver Perfil</button>
+    <br>
+    <br>
+    
+
+    <button (click)="logout()" class="btn-primary">Cerrar sesión</button>
   </div>
-  
+</div>

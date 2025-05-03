@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -12,10 +13,12 @@ import { FormsModule } from '@angular/forms';
 export class ProfileComponent implements OnInit {
   profile = { interests: '', goals: '' };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
+  goBack() {
+    this.router.navigate(['/dashboard']);
+  }
   
-
 
   ngOnInit() {
     const token = localStorage.getItem('token');
