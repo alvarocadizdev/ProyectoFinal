@@ -1,0 +1,20 @@
+<div class="profile-container">
+  <div class="profile-card">
+    <h1>Mi Perfil</h1>
+    <p>Cuéntanos sobre tus intereses y objetivos.</p>
+
+    <form (ngSubmit)="saveProfile()" class="profile-form">
+      <div class="input-group">
+        <label for="interests">Intereses:</label>
+        <textarea id="interests" [(ngModel)]="profile.interests" name="interests" rows="4"></textarea>
+      </div>
+
+      <div class="input-group">
+        <label for="goals">Objetivos:</label>
+        <textarea id="goals" [(ngModel)]="profile.goals" name="goals" rows="4"></textarea>
+      </div>
+
+      <button type="submit" class="btn-primary">Guardar</button>
+    </form>
+  </div>
+</div>

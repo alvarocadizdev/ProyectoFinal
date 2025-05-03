@@ -11,6 +11,10 @@ import { FormsModule } from '@angular/forms';
 export class DashboardComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
+  goToProfile() {
+    this.router.navigate(['/profile']);
+  }
+
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
