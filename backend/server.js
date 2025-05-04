@@ -7,6 +7,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+
+
+app.use('/api/routines', require('./routes/routines'));
+
 app.use('/api/users', require('./routes/auth.routes'));
 app.use('/api/profile', require('./routes/profile.routes'));
 

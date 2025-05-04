@@ -1,0 +1,24 @@
+<div class="create-routine-container">
+    <div class="create-routine-card">
+      <h1>Crear Rutina</h1>
+      <form (ngSubmit)="saveRoutine()" class="create-routine-form">
+        <div class="input-group">
+          <label>Día:</label>
+          <input type="text" [(ngModel)]="routine.day" name="day" required>
+        </div>
+  
+        <div class="input-group">
+          <label>Hora:</label>
+          <input type="time" [(ngModel)]="routine.time" name="time" required>
+        </div>
+  
+        <div class="input-group">
+          <label>Actividad:</label>
+          <input type="text" [(ngModel)]="routine.activity" name="activity" required>
+        </div>
+  
+        <button type="submit" class="btn-primary">Guardar</button>
+      </form>
+    </div>
+  </div>
+  

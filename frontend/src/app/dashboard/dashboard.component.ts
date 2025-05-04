@@ -26,7 +26,10 @@ export class DashboardComponent implements OnInit {
       },
     });
   }
-
+  goToRoutine() {
+    this.router.navigate(['/routine']);
+  }
+  
   goToProfile() {
     this.router.navigate(['/profile']);
   }
