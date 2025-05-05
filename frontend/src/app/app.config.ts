@@ -7,6 +7,6 @@ import { routes } from './app-routing.module';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    provideHttpClient(withInterceptorsFromDi()) // ⬅️ Reemplaza HttpClientModule con esto
+    provideHttpClient(withInterceptorsFromDi())
   ]
 };

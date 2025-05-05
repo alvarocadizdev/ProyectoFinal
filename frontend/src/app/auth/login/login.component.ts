@@ -25,7 +25,7 @@ export class LoginComponent {
 
   login() {
     if (!this.user.email || !this.user.password) {
-      // Si los campos están vacíos, no enviar el formulario
+     
       return;
     }
 

@@ -4,7 +4,7 @@ const { register, login } = require('../controllers/authController');
 const jwt = require('jsonwebtoken');
 const db = require('../config/db');
 
-// Middleware simple para verificar el token JWT
+
 function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization'];
   const token = authHeader?.split(' ')[1];

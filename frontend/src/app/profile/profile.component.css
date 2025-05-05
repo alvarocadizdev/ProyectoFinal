@@ -1,121 +1,167 @@
+/* Estilos base */
 .profile-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: radial-gradient(circle, #1a1a2e, #16213e, #0f3460);
-    font-family: 'Roboto', sans-serif;
-    overflow: hidden;
-    position: relative;
-  }
-  
-  .profile-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://cdn.pixabay.com/photo/2015/10/07/09/31/astronomy-973682_960_720.jpg');
-    background-size: cover;
-    filter: blur(8px);
-    z-index: 1;
-    animation: stars 120s linear infinite;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: radial-gradient(circle, #1a1a2e, #16213e, #0f3460);
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+.profile-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://cdn.pixabay.com/photo/2015/10/07/09/31/astronomy-973682_960_720.jpg');
+  background-size: cover;
+  filter: blur(8px);
+  z-index: 1;
+  animation: stars 120s linear infinite;
+}
+
+.profile-card {
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 20px;
+  padding: 50px 30px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: fadeIn 2s ease-out;
+}
+
+.profile-card h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.profile-card p {
+  font-size: 1.1rem;
+  color: #d1d8e0;
+  margin-bottom: 30px;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-group {
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.input-group textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
+  resize: vertical;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+.input-group textarea:focus {
+  background-color: rgba(255, 255, 255, 0.3);
+  outline: none;
+}
+
+.btn-primary {
+  padding: 14px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  background-color: #6c63ff;
+  color: white;
+  border: none;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #574fd6;
+  transform: translateY(-5px);
+}
+
+/* Espaciado entre botones */
+.profile-form .btn-primary + .btn-primary {
+  margin-top: 20px;
+}
+
+/* Animaciones */
+@keyframes stars {
+  0% { background-position: 0 0; }
+  100% { background-position: 20000px 20000px; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
   .profile-card {
-    position: relative;
-    z-index: 2;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 20px;
-    padding: 50px 30px;
-    max-width: 500px;
-    width: 100%;
-    text-align: center;
-    color: white;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    animation: fadeIn 2s ease-out;
+    padding: 40px 20px;
+    max-width: 90%;
   }
-  
+
   .profile-card h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
   }
-  
+
   .profile-card p {
-    font-size: 1.1rem;
-    color: #d1d8e0;
-    margin-bottom: 30px;
-  }
-  
-  .profile-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .input-group {
-    text-align: left;
-  }
-  
-  .input-group label {
-    display: block;
-    margin-bottom: 8px;
     font-size: 1rem;
-    color: #fff;
   }
-  
-  .input-group textarea {
-    width: 100%;
-    padding: 12px;
-    font-size: 1rem;
-    border-radius: 10px;
-    border: none;
-    resize: vertical;
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #fff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease;
-  }
-  
-  .input-group textarea:focus {
-    background-color: rgba(255, 255, 255, 0.3);
-    outline: none;
-  }
-  
+
   .btn-primary {
-    padding: 14px;
-    font-weight: 600;
-    font-size: 1.1rem;
-    border-radius: 50px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    background-color: #6c63ff;
-    color: white;
-    border: none;
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
-    cursor: pointer;
+    font-size: 1rem;
+    padding: 12px;
   }
-  
-  .btn-primary:hover {
-    background-color: #574fd6;
-    transform: translateY(-5px);
+
+  .input-group textarea {
+    font-size: 0.95rem;
   }
-  
-  @keyframes stars {
-    0% { background-position: 0 0; }
-    100% { background-position: 20000px 20000px; }
+}
+
+@media (max-width: 480px) {
+  .profile-card {
+    padding: 30px 15px;
   }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(50px); }
-    to { opacity: 1; transform: translateY(0); }
+
+  .profile-card h1 {
+    font-size: 1.7rem;
   }
-  
+
+  .btn-primary {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+}

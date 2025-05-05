@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../config/db');
 const jwt = require('jsonwebtoken');
 
-// Middleware para verificar token
+
 function auth(req, res, next) {
   const token = req.headers.authorization?.split(' ')[1];
   if (!token) return res.status(401).json({ message: 'Token requerido' });
@@ -17,7 +17,6 @@ function auth(req, res, next) {
   }
 }
 
-// Guardar o actualizar perfil
 router.post('/', auth, async (req, res) => {
   const { interests, goals } = req.body;
   try {
@@ -33,7 +32,7 @@ router.post('/', auth, async (req, res) => {
   }
 });
 
-// Obtener perfil
+
 router.get('/', auth, async (req, res) => {
   try {
       const [profile] = await db.query('SELECT * FROM profiles WHERE user_id = ?', [req.userId]);

@@ -1,135 +1,279 @@
 /* Fondo oscuro galáctico con estrellas sutiles */
 .create-routine-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-    background: radial-gradient(circle, #1a1a2e, #16213e, #0f3460);
-    font-family: 'Roboto', sans-serif;
-    overflow: hidden;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  width: 100%;
+  background: radial-gradient(circle, #1a1a2e, #16213e, #0f3460);
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+  padding: 20px;
+  overflow-y: auto; /* Permite que toda la página tenga desplazamiento si es necesario */
+}
+
+/* Capa de estrellas (animación de fondo similar al home) */
+.create-routine-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://cdn.pixabay.com/photo/2015/10/07/09/31/astronomy-973682_960_720.jpg');
+  background-size: cover;
+  filter: blur(8px);
+  z-index: 1;
+  animation: stars 120s linear infinite;
+}
+
+/* Tarjeta de crear rutina */
+.create-routine-card, .edit-routine-form {
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 20px;
+  padding: 40px 20px;
+  max-width: 400px;
+  width: 90%; /* Usamos un porcentaje para que se adapte a diferentes tamaños */
+  text-align: center;
+  color: white;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: fadeIn 2s ease-out;
+  margin-bottom: 20px; /* Añadir espacio entre las tarjetas */
+}
+
+/* Título con tipografía futurista */
+.create-routine-card h1, .edit-routine-form h2 {
+  font-size: 2rem;
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* Formulario de crear rutina */
+.create-routine-form, .edit-routine-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espacio reducido entre los campos */
+  margin-bottom: 30px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Espacio reducido entre etiqueta y campo */
+}
+
+.input-group label {
+  font-size: 1rem;
+  color: #fff;
+  text-align: left;
+}
+
+.input-group input {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+.input-group input:focus {
+  background-color: rgba(255, 255, 255, 0.3);
+  outline: none;
+}
+
+/* Botones */
+.btn-primary {
+  padding: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  background-color: #6c63ff;
+  color: white;
+  border: none;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: #574fd6;
+  transform: translateY(-5px);
+}
+
+/* Botón de cancelar */
+.btn-secondary {
+  padding: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary:hover {
+  background-color: #e65c5c;
+  transform: translateY(-5px);
+}
+
+/* Sección de rutinas */
+.routine-list {
+  width: 100%;
+  text-align: center;
+  margin-top: 40px;
+  color: white;
+  padding-bottom: 20px; /* Espacio al final para que no se pegue al borde de la pantalla */
+}
+
+.routine-list h2 {
+  font-size: 1.8rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+/* Lista de rutinas */
+.routine-list ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.routine-list li {
+  font-size: 1rem;
+  margin: 10px 0;
+  text-align: left;
+  color: #d1d8e0;
+}
+
+.routine-list button {
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-left: 10px;
+}
+
+.routine-list button:hover {
+  background-color: #e65c5c;
+}
+
+.error {
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  text-align: left;
+}
+
+/* Animación de las estrellas en el fondo */
+@keyframes stars {
+  0% { background-position: 0 0; }
+  100% { background-position: 20000px 20000px; }
+}
+
+/* Animación de entrada de la tarjeta */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 768px) {
+  .create-routine-container {
+    padding: 15px;
   }
-  
-  /* Capa de estrellas (animación de fondo similar al home) */
-  .create-routine-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://cdn.pixabay.com/photo/2015/10/07/09/31/astronomy-973682_960_720.jpg');
-    background-size: cover;
-    filter: blur(8px);
-    z-index: 1;
-    animation: stars 120s linear infinite;
+
+  .create-routine-card,
+  .edit-routine-form,
+  .routine-list {
+    padding: 30px 15px;
+    width: 95%; /* Ajustamos para que ocupe el 95% del ancho */
   }
-  
-  /* Tarjeta de crear rutina */
-  .create-routine-card {
-    position: relative;
-    z-index: 2;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 20px;
-    padding: 50px 30px;
-    max-width: 400px;
-    width: 100%;
-    text-align: center;
-    color: white;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    animation: fadeIn 2s ease-out;
+
+  .routine-list li {
+    padding-left: 8px;
+    padding-right: 8px;
   }
-  
-  /* Título con tipografía futurista */
-  .create-routine-card h1 {
-    font-size: 2.5rem;
-    color: #ffffff;
-    font-weight: 700;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-family: 'Orbitron', sans-serif;
-  }
-  
-  /* Formulario de crear rutina */
-  .create-routine-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-bottom: 30px;
-  }
-  
-  .input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
+
+  .input-group input,
   .input-group label {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .btn-primary, .btn-secondary {
     font-size: 1rem;
-    color: #fff;
-    text-align: left;
   }
-  
-  .input-group input {
-    padding: 12px;
-    font-size: 1rem;
-    border-radius: 10px;
-    border: none;
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #fff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease;
+
+  .routine-list h2 {
+    font-size: 1.6rem;
   }
-  
-  .input-group input:focus {
-    background-color: rgba(255, 255, 255, 0.3);
-    outline: none;
+
+  .create-routine-card h1,
+  .edit-routine-form h2 {
+    font-size: 1.8rem;
   }
-  
-  /* Botón Guardar */
-  .btn-primary {
-    padding: 14px;
-    font-weight: 600;
-    font-size: 1.1rem;
-    border-radius: 50px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    display: inline-block;
-    width: 100%;
-    text-align: center;
-    cursor: pointer;
-    background-color: #6c63ff;
-    color: white;
-    border: none;
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Responsivo para pantallas muy pequeñas (móviles) */
+@media (max-width: 480px) {
+  .create-routine-container {
+    padding: 10px;
   }
-  
-  .btn-primary:hover {
-    background-color: #574fd6;
-    transform: translateY(-5px);
+
+  .create-routine-card,
+  .edit-routine-form,
+  .routine-list {
+    padding: 20px 10px;
+    width: 90%; /* Ajustamos el tamaño de la tarjeta */
   }
-  
-  /* Animación de las estrellas en el fondo */
-  @keyframes stars {
-    0% { background-position: 0 0; }
-    100% { background-position: 20000px 20000px; }
+
+  .routine-list h2 {
+    font-size: 1.4rem;
   }
-  
-  /* Animación de entrada de la tarjeta */
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(50px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  .error {
-    color: #ff6b6b;
+
+  .routine-list li {
     font-size: 0.9rem;
-    margin-top: 5px;
-    text-align: left;
   }
-  
+
+  .create-routine-card h1,
+  .edit-routine-form h2 {
+    font-size: 1.6rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  .input-group input {
+    font-size: 0.95rem;
+    padding: 8px;
+  }
+}

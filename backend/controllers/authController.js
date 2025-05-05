@@ -2,7 +2,7 @@ const db = require('../config/db');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-// Registro
+
 exports.register = async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -21,7 +21,7 @@ exports.register = async (req, res) => {
   }
 };
 
-// Login
+
 exports.login = async (req, res) => {
   const { email, password } = req.body;
   try {

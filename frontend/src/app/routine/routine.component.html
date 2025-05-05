@@ -1,24 +1,76 @@
+
 <div class="create-routine-container">
-    <div class="create-routine-card">
-      <h1>Crear Rutina</h1>
-      <form (ngSubmit)="saveRoutine()" class="create-routine-form">
-        <div class="input-group">
-          <label>Día:</label>
-          <input type="text" [(ngModel)]="routine.day" name="day" required>
-        </div>
-  
-        <div class="input-group">
-          <label>Hora:</label>
-          <input type="time" [(ngModel)]="routine.time" name="time" required>
-        </div>
-  
-        <div class="input-group">
-          <label>Actividad:</label>
-          <input type="text" [(ngModel)]="routine.activity" name="activity" required>
-        </div>
-  
-        <button type="submit" class="btn-primary">Guardar</button>
-      </form>
-    </div>
+  <!-- Sección para crear una rutina -->
+  <div class="create-routine-card">
+    <h1>Crear Rutina</h1>
+    <form (ngSubmit)="saveRoutine()" class="create-routine-form">
+      <div class="input-group">
+        <label>Día:</label>
+        <input type="text" [(ngModel)]="routine.day" name="day" required>
+      </div>
+
+      <div class="input-group">
+        <label>Hora:</label>
+        <input type="time" [(ngModel)]="routine.time" name="time" required>
+      </div>
+
+      <div class="input-group">
+        <label>Actividad:</label>
+        <input type="text" [(ngModel)]="routine.activity" name="activity" required>
+      </div>
+
+      <button type="submit" class="btn-primary">Guardar</button>
+    </form>
   </div>
-  
+
+  <!-- Sección para mostrar las rutinas -->
+  <div class="routine-list">
+    <h2>Rutinas por Día</h2>
+
+    <!-- Mostrar las rutinas agrupadas por día -->
+    <div *ngIf="groupedRoutines && getKeys(groupedRoutines).length > 0; else noRoutines">
+      <div *ngFor="let day of getKeys(groupedRoutines)">
+        <h3>{{ day }}</h3>
+        <ul>
+          <li *ngFor="let r of groupedRoutines[day]">
+            <strong>Hora:</strong> {{ r.time }} |
+            <strong>Actividad:</strong> {{ r.activity }}
+            <!--
+            
+            <button (click)="editRoutine(r)" class="btn-edit">Editar</button>
+            <button (click)="deleteRoutine(r.id)" class="btn-delete">Eliminar</button>
+            -->
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <ng-template #noRoutines>
+      <p>No hay rutinas guardadas todavía.</p>
+    </ng-template>
+  </div>
+
+  <!-- Sección para editar la rutina -->
+  <div *ngIf="editingRoutine" class="edit-routine-form">
+    <h2>Editar Rutina</h2>
+    <form (ngSubmit)="updateRoutine()">
+      <div class="input-group">
+        <label>Día:</label>
+        <input type="text" [(ngModel)]="editingRoutine.day" name="day" required>
+      </div>
+
+      <div class="input-group">
+        <label>Hora:</label>
+        <input type="time" [(ngModel)]="editingRoutine.time" name="time" required>
+      </div>
+
+      <div class="input-group">
+        <label>Actividad:</label>
+        <input type="text" [(ngModel)]="editingRoutine.activity" name="activity" required>
+      </div>
+
+      <button type="submit" class="btn-primary">Actualizar</button>
+      <button type="button" (click)="cancelEdit()" class="btn-secondary">Cancelar</button>
+    </form>
+  </div>
+</div>

@@ -1,92 +1,140 @@
 .dashboard-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-    background: radial-gradient(circle, #1a1a2e, #16213e, #0f3460);
-    font-family: 'Roboto', sans-serif;
-    overflow: hidden;
-    position: relative;
-  }
-  
-  .dashboard-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://cdn.pixabay.com/photo/2015/10/07/09/31/astronomy-973682_960_720.jpg');
-    background-size: cover;
-    filter: blur(8px);
-    z-index: 1;
-    animation: stars 120s linear infinite;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background: radial-gradient(circle, #1a1a2e, #16213e, #0f3460);
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+.dashboard-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://cdn.pixabay.com/photo/2015/10/07/09/31/astronomy-973682_960_720.jpg');
+  background-size: cover;
+  filter: blur(8px);
+  z-index: 1;
+  animation: stars 120s linear infinite;
+}
+
+.dashboard-card {
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 20px;
+  padding: 60px 40px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: fadeIn 2s ease-out;
+}
+
+.dashboard-card h1 {
+  font-size: 2.5rem;
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.dashboard-card p {
+  color: #d1d8e0;
+  margin-bottom: 30px;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.btn-primary {
+  padding: 14px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  background-color: #6c63ff;
+  color: white;
+  border: none;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: #574fd6;
+  transform: translateY(-5px);
+}
+
+@keyframes stars {
+  0% { background-position: 0 0; }
+  100% { background-position: 20000px 20000px; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* -------------------- */
+/*    Responsive CSS    */
+/* -------------------- */
+
+@media screen and (max-width: 768px) {
   .dashboard-card {
-    position: relative;
-    z-index: 2;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 20px;
-    padding: 60px 40px;
-    max-width: 500px;
-    width: 100%;
-    text-align: center;
-    color: white;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    animation: fadeIn 2s ease-out;
+    padding: 40px 25px;
+    max-width: 90%;
   }
-  
+
   .dashboard-card h1 {
-    font-size: 2.5rem;
-    color: #ffffff;
-    font-weight: 700;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
   }
-  
+
   .dashboard-card p {
-    color: #d1d8e0;
-    margin-bottom: 30px;
-    font-size: 1.2rem;
-    font-weight: 300;
+    font-size: 1rem;
   }
-  
+
   .btn-primary {
-    padding: 14px;
-    font-weight: 600;
-    font-size: 1.1rem;
-    border-radius: 50px;
-    text-transform: uppercase;
+    font-size: 1rem;
+    padding: 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .dashboard-card {
+    padding: 30px 15px;
+    border-radius: 15px;
+  }
+
+  .dashboard-card h1 {
+    font-size: 1.6rem;
     letter-spacing: 1px;
-    transition: all 0.3s ease;
-    display: inline-block;
-    width: 100%;
-    text-align: center;
-    cursor: pointer;
-    background-color: #6c63ff;
-    color: white;
-    border: none;
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
   }
-  
-  .btn-primary:hover {
-    background-color: #574fd6;
-    transform: translateY(-5px);
+
+  .dashboard-card p {
+    font-size: 0.95rem;
   }
-  
-  @keyframes stars {
-    0% { background-position: 0 0; }
-    100% { background-position: 20000px 20000px; }
+
+  .btn-primary {
+    font-size: 0.95rem;
+    padding: 10px;
   }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(50px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
+}
+
+.dashboard-card .btn-primary + .btn-primary {
+  margin-top: 20px;
+}
